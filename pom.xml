@@ -4,52 +4,53 @@
 	<groupId>com.food.ordering.system</groupId>
 	<artifactId>food-ordering-service</artifactId>
 	<version>1.0-SNAPSHOT</version>
-
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.2.2</version>
 		<relativePath></relativePath>
 	</parent>
-
 	<packaging>pom</packaging>
-
 	<modules>
 		<module>order-service</module>
+		<module>common</module>
 	</modules>
-
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven-compiler-plugin-version>3.12.1</maven-compiler-plugin-version>
 	</properties>
-
 	<dependencyManagement>
 		<dependencies>
-			<dependency>
-				<groupId>com.food.ordering.system</groupId>
-				<artifactId>order-domain-core</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.food.ordering.system</groupId>
-				<artifactId>order-application-service</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.food.ordering.system</groupId>
-				<artifactId>order-application</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.food.ordering.system</groupId>
-				<artifactId>oder-dataaccess</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.food.ordering.system</groupId>
-				<artifactId>order-messaging</artifactId>
-				<version>${project.version}</version>
-			</dependency>
+		<dependency>
+			<groupId>com.food.ordering.system</groupId>
+			<artifactId>order-domain-core</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.food.ordering.system</groupId>
+			<artifactId>order-application-service</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.food.ordering.system</groupId>
+			<artifactId>order-application</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.food.ordering.system</groupId>
+			<artifactId>oder-dataaccess</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.food.ordering.system</groupId>
+			<artifactId>order-messaging</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.food.ordering.system</groupId>
+			<artifactId>common-domain</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 		</dependencies>
 	</dependencyManagement>
 	<build>
