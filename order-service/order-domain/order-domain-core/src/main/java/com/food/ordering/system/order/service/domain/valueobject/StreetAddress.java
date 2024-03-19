@@ -34,6 +34,11 @@ public class StreetAddress {
 	}
 
 	@Override
+	public int hashCode() {
+		return Objects.hash(id, street, postal, city);
+	}
+
+	@Override
 	public boolean equals(Object o) {
 		if (this == o) {
 			return true;
@@ -43,10 +48,5 @@ public class StreetAddress {
 		}
 		StreetAddress that = (StreetAddress) o;
 		return Objects.equals(id, that.id) && Objects.equals(street, that.street) && Objects.equals(postal, that.postal) && Objects.equals(city, that.city);
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(id, street, postal, city);
 	}
 }

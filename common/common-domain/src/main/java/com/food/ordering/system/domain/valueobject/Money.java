@@ -5,6 +5,7 @@ import java.math.RoundingMode;
 import java.util.Objects;
 
 public class Money {
+	public static final Money ZERO = new Money(BigDecimal.ZERO);
 	private final BigDecimal amount;
 
 	public Money(BigDecimal amount) {
@@ -19,8 +20,16 @@ public class Money {
 		return (amount != null) && (amount.compareTo(money.getAmount()) > 0);
 	}
 
+	public BigDecimal getAmount() {
+		return amount;
+	}
+
 	public Money add(Money money) {
 		return new Money(setScale(amount.add(money.getAmount())));
+	}
+
+	private static BigDecimal setScale(BigDecimal input) {
+		return input.setScale(2, RoundingMode.HALF_DOWN);
 	}
 
 	public Money subtract(Money money) {
@@ -31,8 +40,9 @@ public class Money {
 		return new Money(setScale(amount.multiply(new BigDecimal(multiplier))));
 	}
 
-	public BigDecimal getAmount() {
-		return amount;
+	@Override
+	public int hashCode() {
+		return Objects.hash(amount);
 	}
 
 	@Override
@@ -46,14 +56,5 @@ public class Money {
 		}
 		Money money = (Money) o;
 		return (amount == null) ? (money.amount == null) : (amount.compareTo(money.amount) == 0);
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(amount);
-	}
-
-	private static BigDecimal setScale(BigDecimal input) {
-		return input.setScale(2, RoundingMode.HALF_DOWN);
 	}
 }
