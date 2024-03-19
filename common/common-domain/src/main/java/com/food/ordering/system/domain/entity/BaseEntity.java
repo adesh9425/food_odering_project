@@ -15,6 +15,11 @@ public abstract class BaseEntity<ID> {
 	}
 
 	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
 	public boolean equals(Object o) {
 		if (this == o) {
 			return true;
@@ -24,10 +29,5 @@ public abstract class BaseEntity<ID> {
 		}
 		BaseEntity<?> that = (BaseEntity<?>) o;
 		return Objects.equals(id, that.id);
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(id);
 	}
 }
