@@ -7,13 +7,11 @@ import com.food.ordering.system.order.service.domain.valueobject.OrderItemID;
 
 public class OrderItem extends BaseEntity<OrderItemID> {
 
-	private OrderID orderID;
 	private final Product product;
-
 	private final int quantity;
-
 	private final Money price;
 	private final Money subTotal;
+	private OrderID orderID;
 
 	private OrderItem(Builder builder) {
 		super.setId(builder.orderItemID);
@@ -21,6 +19,17 @@ public class OrderItem extends BaseEntity<OrderItemID> {
 		quantity = builder.quantity;
 		price = builder.price;
 		subTotal = builder.subTotal;
+	}
+
+	boolean isPriceValid() {
+		return price.isGreaterThanZero() && price.equals(product.getPrice()) && price.multiply(quantity)
+																					 .equals(subTotal);
+	}
+
+	public void initializeOrderItem(OrderID orderid, OrderItemID orderItemID) {
+		setId(orderItemID);
+		this.orderID = orderid;
+
 	}
 
 	public OrderID getOrderID() {
